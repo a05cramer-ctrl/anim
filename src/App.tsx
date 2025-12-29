@@ -4,6 +4,8 @@ import './App.css'
 
 function App() {
   const [subheadlineIndex, setSubheadlineIndex] = useState(0)
+  const [copied, setCopied] = useState(false)
+  const contractAddress = "HwmSotTra2yRrrsAk18ipEEfEXjP5eAyCsrbfCMepump"
   const subheadlines = [
     "Too cute to dump.",
     "Kawaii liquidity.",
@@ -163,12 +165,27 @@ function App() {
           <img src={mascotImage} alt="AnimWhale" className="watermark-img" />
         </div>
         <div className="footer-content">
+          <div className="contract-address-container">
+            <span className="contract-label">ca:</span>
+            <span 
+              className="contract-address"
+              onClick={async () => {
+                try {
+                  await navigator.clipboard.writeText(contractAddress)
+                  setCopied(true)
+                  setTimeout(() => setCopied(false), 2000)
+                } catch (err) {
+                  console.error('Failed to copy:', err)
+                }
+              }}
+              title={copied ? "Copied!" : "Click to copy"}
+            >
+              {contractAddress}
+            </span>
+            {copied && <span className="copy-indicator">✓ Copied!</span>}
+          </div>
           <div className="social-icons">
             <a href="https://x.com/AnimWhale" target="_blank" rel="noopener noreferrer" className="social-icon hover-bounce">𝕏</a>
-            <button className="social-icon hover-bounce" onClick={() => {
-              // Contract address will be added here
-              navigator.clipboard.writeText('0x...');
-            }}>ca</button>
           </div>
         </div>
       </footer>
