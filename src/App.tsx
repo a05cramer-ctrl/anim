@@ -5,7 +5,7 @@ import './App.css'
 function App() {
   const [subheadlineIndex, setSubheadlineIndex] = useState(0)
   const [copied, setCopied] = useState(false)
-  const contractAddress = "J6iDjkL8J85vZJZSsZPfcBQY6ckeL9XEtnBJQFr9pump"
+  const contractAddress = "GWw9XUg6QooPM4hTqepCeDV3qGqCsRL7CngJp3fapump"
   const subheadlines = [
     "Too cute to dump.",
     "Kawaii liquidity.",
